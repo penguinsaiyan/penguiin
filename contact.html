@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — penguiin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="nav-mark" href="index.html">penguiin<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="archive.html">Archive</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h1>Get In Touch</h1>
+    <p class="lede">Reach out directly, or send a note using the form.</p>
+
+    <div class="contact-grid" style="margin-top: 2.5rem;">
+      <div>
+        <ul class="contact-list">
+          <li>
+            <span class="c-label">Email</span>
+            <a href="mailto:haydenpersonal@proton.me">haydenpersonal@proton.me</a>
+          </li>
+          <li>
+            <span class="c-label">Discord</span>
+            <a href="https://discord.com/users/1159987169717391492">@penguinsaiyan</a>
+          </li>
+          <li>
+            <span class="c-label">GitHub</span>
+            <a href="https://github.com/penguinsaiyan">@penguinsaiyan</a>
+          </li>
+          <li>
+            <span class="c-label">Location</span>
+            <span>Nebraska, USA</span>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="fb2ff7d9-1834-4e57-9a6a-e8f0ef0cccc8">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Say hello" required></textarea>
+        </div>
+        <button class="btn" type="submit" id="submit-btn" style="justify-self: start;" disabled>Send message</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <p style="font-size: 0.8rem; margin-top: -0.5rem;">This form was created using Web3Forms.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="nav">
+    <span>© 2026 penguiin. All rights reserved</span>
+    <a href="contact.html">Contact Me</a>
+  </div>
+</footer>
+
+<script src="scripts/manifest.js"></script>
+<script src="scripts/site.js"></script>
+<script>
+  const form = document.getElementById("contact-form");
+  const submitBtn = document.getElementById("submit-btn");
+  const statusEl = document.getElementById("form-status");
+
+  function updateSubmitState() {
+    submitBtn.disabled = !form.checkValidity();
+  }
+
+  form.addEventListener("input", updateSubmitState);
+  updateSubmitState();
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!form.reportValidity()) {
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+    statusEl.textContent = "";
+    statusEl.className = "form-status";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form),
+      });
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        statusEl.textContent = "Message sent — thanks for reaching out!";
+        statusEl.className = "form-status success";
+        form.reset();
+      } else {
+        statusEl.textContent = "Something went wrong. Try again, or email me directly.";
+        statusEl.className = "form-status error";
+      }
+    } catch (err) {
+      statusEl.textContent = "Something went wrong. Try again, or email me directly.";
+      statusEl.className = "form-status error";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send message";
+    }
+  });
+</script>
+</body>
+</html>

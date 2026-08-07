@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avatar Archive — penguiin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="nav-mark" href="index.html">penguiin<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="archive.html" aria-current="page">Archive</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <div class="archive-intro">
+      <div>
+        <h1>Avatar Archive</h1>
+        <p class="lede">All the avatars I've used on Discord.</p>
+      </div>
+      <span class="archive-count" id="archive-count"></span>
+    </div>
+
+    <div class="avatar-picker">
+      <div class="avatar-grid" id="avatar-grid"></div>
+    </div>
+
+    <div class="archive-empty" id="archive-empty" hidden>
+      No avatars shown.
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="nav">
+    <span>© 2026 penguiin. All rights reserved</span>
+    <a href="contact.html">Contact Me</a>
+  </div>
+</footer>
+
+<script src="scripts/manifest.js"></script>
+<script src="scripts/site.js"></script>
+<script>
+  const avatarGrid = document.getElementById("avatar-grid");
+  const emptyState = document.getElementById("archive-empty");
+  const countLabel = document.getElementById("archive-count");
+  const manifest = window.PHOTO_MANIFEST || [];
+
+  countLabel.textContent = manifest.length
+    ? `${manifest.length} avatar${manifest.length === 1 ? "" : "s"} saved`
+    : "";
+
+  if (manifest.length === 0) {
+    emptyState.hidden = false;
+    document.querySelector(".avatar-picker").hidden = true;
+  } else {
+    renderGrid();
+  }
+
+  function renderGrid() {
+    const active = getActivePhoto();
+    avatarGrid.innerHTML = "";
+
+    manifest.forEach((photo) => {
+      const isActive = active && photo.id === active.id;
+      const slot = document.createElement("div");
+      slot.className = "avatar-slot" + (isActive ? " is-active" : "");
+      slot.innerHTML = `
+        <span class="avatar">
+          <img src="${photo.file}" alt="Archived profile picture, added ${photo.dateAdded}" loading="lazy">
+        </span>
+        <span class="slot-label">${isActive ? "Active" : photo.dateAdded}</span>
+      `;
+      avatarGrid.appendChild(slot);
+    });
+  }
+</script>
+</body>
+</html>
