@@ -606,3 +606,100 @@ p { color: var(--text-muted); margin: 0 0 1rem; }
   border-radius: 4px;
   color: var(--text-muted);
 }
+
+/* links page */
+.links-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+ 
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+ 
+.link-card:hover,
+.link-card:focus-visible {
+  background: var(--bg-card);
+  border-color: var(--link-accent, var(--blurple));
+  transform: translateY(-2px);
+}
+ 
+.link-card:active {
+  transform: translateY(0);
+}
+ 
+.link-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  color: var(--link-accent, var(--blurple));
+  transition: background 0.15s ease, color 0.15s ease;
+}
+ 
+.link-card:hover .link-icon,
+.link-card:focus-visible .link-icon {
+  background: var(--link-accent, var(--blurple));
+  color: #fff;
+}
+ 
+.link-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+ 
+.link-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+ 
+.link-name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+}
+ 
+.link-handle {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+ 
+.link-arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--text-faint);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+ 
+.link-card:hover .link-arrow,
+.link-card:focus-visible .link-arrow {
+  color: var(--text);
+  transform: translateX(2px);
+}
+ 
+.link-arrow svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
