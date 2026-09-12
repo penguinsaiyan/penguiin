@@ -23,10 +23,17 @@ window.PHOTO_MANIFEST = [
     "defaultActive": false
   },
   {
-    "id": "active-2026-09-06",
-    "file": "avatars/active-2026-09-06.jpg",
+    "id": "2026-09-06",
+    "file": "avatars/2026-09-06.jpg",
     "frame": "004",
     "dateAdded": "2026-09-06",
+    "defaultActive": false
+  },
+  {
+    "id": "active-2026-09-12",
+    "file": "avatars/active-2026-09-12.jpg",
+    "frame": "005",
+    "dateAdded": "2026-09-12",
     "defaultActive": true
   }
 ];
