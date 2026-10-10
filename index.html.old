@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1E1F22">
+<title>penguiin </title>
+<meta name="description" content="This is penguiin's portfolio page.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Penguiin Portfolio">
+<meta property="og:description" content="Heyo, I'm penguiin, and this is my portfolio.">
+<meta property="og:url" content="https://penguiin.dedyn.io">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://code.iconify.design/iconify-icon/3.0.3/iconify-icon.min.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="nav-mark" href="/">penguiin<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="/" aria-current="page">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/links">Links</a></li>
+      <li><a href="/archive">Archive</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section class="announce">
+    <iconify-icon class="announce-icon" icon="basil:bullhorn-solid"></iconify-icon>
+
+    <div class="announce-body">
+      <div class="announce-head">
+        <h2 class="announce-title">Heads up!</h2>
+        <span class="announce-badge">In progress</span>
+      </div>
+
+      <p class="announce-text">
+        This site is getting a full overhaul. Things are moving around,
+        links may be broken, and some pages are still finding their new shape.
+        Check back soon.
+      </p>
+    </div>
+  </section>
+
+  <section class="hero">
+    <div class="avatar">
+      <img data-active-photo alt="Current profile picture" src="">
+    </div>
+
+    <div>
+      <h1>Hey, I'm penguiin</h1>
+      <p class="lede">Casual Developer & Anime Enthusiast</p>
+      <div class="hero-actions">
+        <a class="btn" href="about.html">About me</a>
+        <a class="btn secondary" href="contact.html">Get in touch</a>
+      </div>
+
+      <div class="status-pills">
+        <span class="status-pill"><span class="dot"></span> Based in <strong>Nebraska, USA</strong></span>
+        <span class="status-pill"><span class="dot"></span> <strong>Open to work</strong></span>
+        <span class="status-pill"><span class="dot"></span> Focused on <strong>RecPlace</strong></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="nav">
+    <span>© 2026 penguiin. All rights reserved</span>
+    <a href="contact.html">Contact Me</a>
+  </div>
+</footer>
+
+<script src="scripts/manifest.js"></script>
+<script src="scripts/site.js"></script>
+</body>
+</html>
